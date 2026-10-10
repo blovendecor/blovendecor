@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Bloven Control — Dashboard</title>
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+</head>
+
+
+<body class="admin-dashboard-page">
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="dashboard-topbar">
+
+            <div>
+
+                <p class="dashboard-eyebrow">
+                    BLOVEN CONTROL
+                </p>
+
+                <h1>
+                    Good morning.
+                </h1>
+
+            </div>
+
+
+            <div class="dashboard-topbar-right">
+
+                <div class="dashboard-date" id="dashboardDate">
+                    Loading date...
+                </div>
+
+                <div class="admin-avatar">
+                    B
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             OVERVIEW
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Overview
+                    </h2>
+
+                </div>
+
+                <span class="section-caption">
+                    Financial position & activity
+                </span>
+
+            </div>
+
+
+            <div class="dashboard-stats">
+
+
+                <!-- TOTAL BOOKINGS -->
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        TOTAL BOOKINGS
+                    </span>
+
+                    <strong id="totalBookings">
+                        —
+                    </strong>
+
+                    <small>
+                        All booking requests
+                    </small>
+
+                </article>
+
+
+                <!-- TOTAL AGREED -->
+
+                <article class="stat-card stat-card-dark">
+
+                    <span class="stat-label">
+                        TOTAL AGREED
+                    </span>
+
+                    <strong id="totalAgreed">
+                        UGX 0
+                    </strong>
+
+                    <small>
+                        Across all bookings
+                    </small>
+
+                </article>
+
+
+                <!-- RECEIVED -->
+
+                <article class="stat-card">
+
+                    <span class="stat-label">
+                        RECEIVED
+                    </span>
+
+                    <strong id="totalReceived">
+                        UGX 0
+                    </strong>
+
+                    <small>
+                        Payments received
+                    </small>
+
+                </article>
+
+
+                <!-- BALANCE -->
+
+                <article class="stat-card stat-card-pink">
+
+                    <span class="stat-label">
+                        OUTSTANDING
+                    </span>
+
+                    <strong id="totalBalance">
+                        UGX 0
+                    </strong>
+
+                    <small>
+                        Remaining balance
+                    </small>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ACTIVITY GRID
+        ================================================== -->
+
+        <section class="dashboard-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Activity
+                    </h2>
+
+                </div>
+
+                <a
+                    href="bookings.html"
+                    class="dashboard-link"
+                >
+                    VIEW ALL BOOKINGS ↗
+                </a>
+
+            </div>
+
+
+            <div class="dashboard-content-grid">
+
+
+                <!-- =========================================
+                     RECENT BOOKINGS
+                ========================================== -->
+
+                <article class="dashboard-panel recent-bookings-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                RECENT
+                            </span>
+
+                            <h3>
+                                Bookings
+                            </h3>
+
+                        </div>
+
+                        <span class="panel-count" id="recentCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="recent-bookings"
+                        id="recentBookings"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading bookings...
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- =========================================
+                     UPCOMING
+                ========================================== -->
+
+                <article class="dashboard-panel upcoming-panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                NEXT
+                            </span>
+
+                            <h3>
+                                Upcoming events
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="upcoming-events"
+                        id="upcomingEvents"
+                    >
+
+                        <div class="dashboard-loading">
+                            Loading events...
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINANCIAL SNAPSHOT
+        ================================================== -->
+
+        <section class="dashboard-section financial-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <h2>
+                        Financial snapshot
+                    </h2>
+
+                </div>
+
+                <a
+                    href="payments.html"
+                    class="dashboard-link"
+                >
+                    VIEW PAYMENTS ↗
+                </a>
+
+            </div>
+
+
+            <div class="financial-panel">
+
+
+                <div class="financial-main">
+
+                    <span>
+                        OUTSTANDING BALANCE
+                    </span>
+
+                    <strong id="financialBalance">
+                        UGX 0
+                    </strong>
+
+                    <p>
+                        Amount currently outstanding across
+                        confirmed and active bookings.
+                    </p>
+
+                </div>
+
+
+                <div class="financial-side">
+
+
+                    <div class="financial-row">
+
+                        <span>
+                            AGREED
+                        </span>
+
+                        <strong id="financialAgreed">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="financial-row">
+
+                        <span>
+                            RECEIVED
+                        </span>
+
+                        <strong id="financialReceived">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="financial-row">
+
+                        <span>
+                            PAYMENT RATE
+                        </span>
+
+                        <strong id="paymentRate">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================== -->
+
+        <section class="dashboard-section quick-actions-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        04
+                    </span>
+
+                    <h2>
+                        Quick actions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a
+                    href="bookings.html"
+                    class="quick-action"
+                >
+
+                    <span>
+                        BOOKINGS
+                    </span>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <a
+                    href="calendar.html"
+                    class="quick-action"
+                >
+
+                    <span>
+                        CALENDAR
+                    </span>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <a
+                    href="clients.html"
+                    class="quick-action"
+                >
+
+                    <span>
+                        CLIENTS
+                    </span>
+
+                    <b>
+                        ↗
+                    </b>
+
+                </a>
+
+
+                <a
+                    href="payments.html"
+                    class="quick-action"
+                >
+
+                    <span>
+                        ADD PAYMENT
+                    </span>
+
+                    <b>
+                        +
+                    </b>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                BLOVEN DECOR
+            </span>
+
+            <span>
+                PRIVATE CONTROL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         RIGHT SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="admin-sidebar admin-sidebar-right"
+        id="adminSidebar"
+    >
+
+
+        <!-- BRAND -->
+
+        <div class="sidebar-brand">
+
+            <a href="../index.html">
+                B
+            </a>
+
+            <span>
+                BLOVEN
+            </span>
+
+            <button
+                type="button"
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                aria-label="Collapse sidebar"
+            >
+                ‹
+            </button>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-navigation">
+
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item active"
+                data-label="Dashboard"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="admin-nav-item"
+                data-label="Bookings"
+            >
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span class="nav-text">
+                    Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="calendar.html"
+                class="admin-nav-item"
+                data-label="Calendar"
+            >
+
+                <span class="nav-icon">
+                    ◫
+                </span>
+
+                <span class="nav-text">
+                    Calendar
+                </span>
+
+            </a>
+
+
+            <a
+                href="clients.html"
+                class="admin-nav-item"
+                data-label="Clients"
+            >
+
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span class="nav-text">
+                    Clients
+                </span>
+
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="admin-nav-item"
+                data-label="Payments"
+            >
+
+                <span class="nav-icon">
+                    ₣
+                </span>
+
+                <span class="nav-text">
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="receipts.html"
+                class="admin-nav-item"
+                data-label="Receipts"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span class="nav-text">
+                    Receipts
+                </span>
+
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="admin-nav-item"
+                data-label="Settings"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span class="nav-text">
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span class="nav-text">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-nav-item sidebar-signout"
+                id="signOutButton"
+                data-label="Sign out"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span class="nav-text">
+                    Sign out
+                </span>
+
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="../js/dashboard.js"></script>
+
+</body>
+</html>

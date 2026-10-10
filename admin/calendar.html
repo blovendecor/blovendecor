@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Calendar — Bloven Control</title>
+
+    <meta
+        name="description"
+        content="Bloven Decor private calendar and event schedule."
+    >
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MASTER ADMIN THEME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+
+    <!-- =====================================================
+         CALENDAR STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/calendar.css"
+    >
+
+</head>
+
+
+<body class="admin-dashboard-page">
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="dashboard-topbar">
+
+            <div class="dashboard-topbar-left">
+
+                <div class="dashboard-eyebrow">
+                    BLOVEN CONTROL
+                </div>
+
+                <h1>
+                    Calendar.
+                </h1>
+
+            </div>
+
+
+            <div class="dashboard-topbar-right">
+
+                <div
+                    class="dashboard-date"
+                    id="calendarDate"
+                >
+                    Loading date...
+                </div>
+
+                <div class="admin-avatar">
+                    B
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CALENDAR SECTION
+        ================================================== -->
+
+        <section class="dashboard-section calendar-section">
+
+
+            <!-- SECTION HEADING -->
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Event Calendar
+                    </h2>
+
+                </div>
+
+
+                <p class="section-caption">
+                    A clear view of everything coming up.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CALENDAR HEADER
+            ================================================== -->
+
+            <div class="calendar-header">
+
+
+                <div class="calendar-heading">
+
+
+                    <button
+                        type="button"
+                        class="calendar-arrow"
+                        id="previousMonth"
+                        aria-label="Previous month"
+                    >
+                        ←
+                    </button>
+
+
+                    <div class="calendar-month">
+
+                        <span id="calendarMonth">
+                            October
+                        </span>
+
+                        <span id="calendarYear">
+                            2026
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="calendar-arrow"
+                        id="nextMonth"
+                        aria-label="Next month"
+                    >
+                        →
+                    </button>
+
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="calendar-today"
+                    id="todayButton"
+                >
+
+                    <span>
+                        Today
+                    </span>
+
+                    <span>
+                        ↗
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 CALENDAR LEGEND
+            ================================================== -->
+
+            <div class="calendar-legend">
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-dot legend-new"
+                    ></span>
+
+                    <span>
+                        New
+                    </span>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-dot legend-confirmed"
+                    ></span>
+
+                    <span>
+                        Confirmed
+                    </span>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-dot legend-paid"
+                    ></span>
+
+                    <span>
+                        Fully Paid
+                    </span>
+
+                </div>
+
+
+                <div class="legend-item">
+
+                    <span
+                        class="legend-dot legend-other"
+                    ></span>
+
+                    <span>
+                        Other
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 CALENDAR + SELECTED DAY
+            ================================================== -->
+
+            <div class="calendar-layout">
+
+
+                <!-- CALENDAR -->
+
+                <div class="calendar-card">
+
+
+                    <div class="calendar-weekdays">
+
+                        <div>
+                            MON
+                        </div>
+
+                        <div>
+                            TUE
+                        </div>
+
+                        <div>
+                            WED
+                        </div>
+
+                        <div>
+                            THU
+                        </div>
+
+                        <div>
+                            FRI
+                        </div>
+
+                        <div>
+                            SAT
+                        </div>
+
+                        <div>
+                            SUN
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="calendar-grid"
+                        id="calendarGrid"
+                    >
+                        <!-- Generated by calendar.js -->
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     SELECTED DAY PANEL
+                ================================================== -->
+
+                <aside class="calendar-day-panel">
+
+
+                    <div class="day-panel-top">
+
+                        <div class="dashboard-eyebrow">
+                            SELECTED DAY
+                        </div>
+
+                        <h3 id="selectedDate">
+                            Select a date
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        class="selected-events"
+                        id="selectedEvents"
+                    >
+
+
+                        <div class="calendar-empty">
+
+                            <div class="calendar-empty-mark">
+                                —
+                            </div>
+
+                            <p>
+                                Select a day to view its events.
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                </aside>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             UPCOMING EVENTS
+        ================================================== -->
+
+        <section
+            class="dashboard-section upcoming-calendar-section"
+        >
+
+
+            <div class="section-title-row">
+
+
+                <div>
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Upcoming Events
+                    </h2>
+
+                </div>
+
+
+                <div>
+
+                    <p class="section-caption">
+                        The next events on the Bloven schedule.
+                    </p>
+
+                    <a
+                        href="bookings.html"
+                        class="dashboard-link"
+                    >
+                        View bookings
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <div
+                class="upcoming-events-list"
+                id="upcomingEvents"
+            >
+
+                <div class="calendar-loading">
+                    Loading upcoming events...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                BLOVEN DECOR
+            </span>
+
+            <span>
+                PRIVATE CONTROL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         MASTER RIGHT SIDEBAR
+         EXACT DASHBOARD STRUCTURE
+    ====================================================== -->
+
+    <aside
+        class="admin-sidebar admin-sidebar-right"
+        id="adminSidebar"
+    >
+
+
+        <!-- =================================================
+             SIDEBAR BRAND
+        ================================================== -->
+
+        <div class="sidebar-brand">
+
+
+            <a href="../index.html">
+
+                B
+
+            </a>
+
+
+            <span>
+                BLOVEN
+            </span>
+
+
+            <button
+                type="button"
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                aria-label="Collapse sidebar"
+            >
+                ‹
+            </button>
+
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+
+        <nav class="admin-navigation">
+
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+                data-label="Dashboard"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="admin-nav-item"
+                data-label="Bookings"
+            >
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span class="nav-text">
+                    Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="calendar.html"
+                class="admin-nav-item active"
+                data-label="Calendar"
+            >
+
+                <span class="nav-icon">
+                    ◫
+                </span>
+
+                <span class="nav-text">
+                    Calendar
+                </span>
+
+            </a>
+
+
+            <a
+                href="clients.html"
+                class="admin-nav-item"
+                data-label="Clients"
+            >
+
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span class="nav-text">
+                    Clients
+                </span>
+
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="admin-nav-item"
+                data-label="Payments"
+            >
+
+                <span class="nav-icon">
+                    ₣
+                </span>
+
+                <span class="nav-text">
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="receipts.html"
+                class="admin-nav-item"
+                data-label="Receipts"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span class="nav-text">
+                    Receipts
+                </span>
+
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="admin-nav-item"
+                data-label="Settings"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span class="nav-text">
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM
+        ================================================== -->
+
+        <div class="sidebar-bottom">
+
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span class="nav-text">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-nav-item sidebar-signout"
+                id="signOutButton"
+                data-label="Sign out"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span class="nav-text">
+                    Sign out
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =====================================================
+     CALENDAR JAVASCRIPT
+====================================================== -->
+
+<script src="../js/calendar.js"></script>
+
+
+</body>
+
+</html>

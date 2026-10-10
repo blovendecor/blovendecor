@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Clients — Bloven Control</title>
+
+    <meta
+        name="description"
+        content="Bloven Decor private client management."
+    >
+
+    <!-- =====================================================
+         FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MASTER ADMIN THEME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+
+    <!-- =====================================================
+         CLIENTS STYLES
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/clients.css"
+    >
+
+</head>
+
+
+<body class="admin-dashboard-page">
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="dashboard-topbar">
+
+            <div class="dashboard-topbar-left">
+
+                <div class="dashboard-eyebrow">
+                    BLOVEN CONTROL
+                </div>
+
+                <h1>
+                    Clients.
+                </h1>
+
+            </div>
+
+
+            <div class="dashboard-topbar-right">
+
+                <div
+                    class="dashboard-date"
+                    id="clientsDate"
+                >
+                    Loading date...
+                </div>
+
+                <div class="admin-avatar">
+                    B
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CLIENT OVERVIEW
+        ================================================== -->
+
+        <section class="dashboard-section clients-overview-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        01
+                    </span>
+
+                    <h2>
+                        Client Overview
+                    </h2>
+
+                </div>
+
+
+                <p class="section-caption">
+                    Everyone who has worked with Bloven.
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 CLIENT STATS
+            ================================================== -->
+
+            <div class="clients-stats">
+
+
+                <div class="client-stat-card">
+
+                    <span class="client-stat-label">
+                        TOTAL CLIENTS
+                    </span>
+
+                    <strong id="totalClients">
+                        0
+                    </strong>
+
+                    <small>
+                        Registered clients
+                    </small>
+
+                </div>
+
+
+                <div class="client-stat-card client-stat-dark">
+
+                    <span class="client-stat-label">
+                        ACTIVE CLIENTS
+                    </span>
+
+                    <strong id="activeClients">
+                        0
+                    </strong>
+
+                    <small>
+                        Clients with upcoming events
+                    </small>
+
+                </div>
+
+
+                <div class="client-stat-card client-stat-pink">
+
+                    <span class="client-stat-label">
+                        TOTAL AGREED
+                    </span>
+
+                    <strong id="totalAgreed">
+                        UGX 0
+                    </strong>
+
+                    <small>
+                        Across all bookings
+                    </small>
+
+                </div>
+
+
+                <div class="client-stat-card">
+
+                    <span class="client-stat-label">
+                        RECEIVED
+                    </span>
+
+                    <strong id="totalReceived">
+                        UGX 0
+                    </strong>
+
+                    <small>
+                        Payments received
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CLIENT DIRECTORY
+        ================================================== -->
+
+        <section class="dashboard-section clients-directory-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        02
+                    </span>
+
+                    <h2>
+                        Client Directory
+                    </h2>
+
+                </div>
+
+
+                <p
+                    class="section-caption"
+                    id="clientDirectoryCount"
+                >
+                    0 clients
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 TOOLBAR
+            ================================================== -->
+
+            <div class="clients-toolbar">
+
+
+                <div class="client-search">
+
+                    <span class="search-icon">
+                        /
+                    </span>
+
+                    <input
+                        type="search"
+                        id="clientSearch"
+                        placeholder="Search clients..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="client-reset"
+                    id="resetClientSearch"
+                >
+                    Reset
+                </button>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 DESKTOP CLIENT TABLE
+            ================================================== -->
+
+            <div class="clients-table-wrap">
+
+
+                <table class="clients-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                CLIENT
+                            </th>
+
+                            <th>
+                                CONTACT
+                            </th>
+
+                            <th>
+                                BOOKINGS
+                            </th>
+
+                            <th>
+                                TOTAL AGREED
+                            </th>
+
+                            <th>
+                                RECEIVED
+                            </th>
+
+                            <th>
+                                BALANCE
+                            </th>
+
+                            <th>
+                                STATUS
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="clientsTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="clients-loading"
+                            >
+                                Loading clients...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 MOBILE CLIENT LIST
+            ================================================== -->
+
+            <div
+                class="clients-mobile-list"
+                id="clientsMobileList"
+            >
+
+                <div class="clients-loading">
+                    Loading clients...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             CLIENT INSIGHT
+        ================================================== -->
+
+        <section class="dashboard-section client-insight-section">
+
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-number">
+                        03
+                    </span>
+
+                    <h2>
+                        Client Relationship
+                    </h2>
+
+                </div>
+
+                <p class="section-caption">
+                    A quick look at your client base.
+                </p>
+
+            </div>
+
+
+            <div class="client-insight-grid">
+
+
+                <!-- RETURNING CLIENTS -->
+
+                <div class="client-insight-card">
+
+                    <div class="insight-card-heading">
+
+                        <span>
+                            RETURNING
+                        </span>
+
+                        <b>
+                            ↗
+                        </b>
+
+                    </div>
+
+
+                    <strong id="returningClients">
+                        0
+                    </strong>
+
+
+                    <p>
+                        Clients with more than one booking.
+                    </p>
+
+                </div>
+
+
+                <!-- OUTSTANDING -->
+
+                <div class="client-insight-card client-insight-dark">
+
+                    <div class="insight-card-heading">
+
+                        <span>
+                            OUTSTANDING
+                        </span>
+
+                        <b>
+                            ₣
+                        </b>
+
+                    </div>
+
+
+                    <strong id="clientOutstanding">
+                        UGX 0
+                    </strong>
+
+
+                    <p>
+                        Remaining balance across all client bookings.
+                    </p>
+
+                </div>
+
+
+                <!-- LATEST -->
+
+                <div class="client-insight-card">
+
+                    <div class="insight-card-heading">
+
+                        <span>
+                            LATEST CLIENT
+                        </span>
+
+                        <b>
+                            +
+                        </b>
+
+                    </div>
+
+
+                    <strong
+                        id="latestClient"
+                        class="latest-client-name"
+                    >
+                        —
+                    </strong>
+
+
+                    <p id="latestClientDate">
+                        No clients yet.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                BLOVEN DECOR
+            </span>
+
+            <span>
+                PRIVATE CONTROL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         MASTER RIGHT SIDEBAR
+         EXACT DASHBOARD STRUCTURE
+    ====================================================== -->
+
+    <aside
+        class="admin-sidebar admin-sidebar-right"
+        id="adminSidebar"
+    >
+
+
+        <div class="sidebar-brand">
+
+            <a href="../index.html">
+                B
+            </a>
+
+            <span>
+                BLOVEN
+            </span>
+
+            <button
+                type="button"
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                aria-label="Collapse sidebar"
+            >
+                ‹
+            </button>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+                data-label="Dashboard"
+            >
+
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="admin-nav-item"
+                data-label="Bookings"
+            >
+
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span class="nav-text">
+                    Bookings
+                </span>
+
+            </a>
+
+
+            <a
+                href="calendar.html"
+                class="admin-nav-item"
+                data-label="Calendar"
+            >
+
+                <span class="nav-icon">
+                    ◫
+                </span>
+
+                <span class="nav-text">
+                    Calendar
+                </span>
+
+            </a>
+
+
+            <a
+                href="clients.html"
+                class="admin-nav-item active"
+                data-label="Clients"
+            >
+
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span class="nav-text">
+                    Clients
+                </span>
+
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="admin-nav-item"
+                data-label="Payments"
+            >
+
+                <span class="nav-icon">
+                    ₣
+                </span>
+
+                <span class="nav-text">
+                    Payments
+                </span>
+
+            </a>
+
+
+            <a
+                href="receipts.html"
+                class="admin-nav-item"
+                data-label="Receipts"
+            >
+
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span class="nav-text">
+                    Receipts
+                </span>
+
+            </a>
+
+
+            <a
+                href="settings.html"
+                class="admin-nav-item"
+                data-label="Settings"
+            >
+
+                <span class="nav-icon">
+                    ⚙
+                </span>
+
+                <span class="nav-text">
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span class="nav-text">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-nav-item sidebar-signout"
+                id="signOutButton"
+                data-label="Sign out"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span class="nav-text">
+                    Sign out
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+</div>
+
+
+<!-- =====================================================
+     SUPABASE
+====================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =====================================================
+     CLIENTS JAVASCRIPT
+====================================================== -->
+
+<script src="../js/clients.js"></script>
+
+
+</body>
+
+</html>

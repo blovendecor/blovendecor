@@ -1,0 +1,1249 @@
+/* =========================================================
+   BLOVEN ADMIN
+   INDIVIDUAL BOOKING PAGE
+========================================================= */
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.booking-topbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 35px;
+    margin-bottom: 70px;
+}
+
+.booking-topbar-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.booking-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 45px;
+    color: var(--admin-grey);
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+.booking-back span:first-child {
+    font-size: 15px;
+    transition: transform 0.25s ease;
+}
+
+.booking-back:hover {
+    color: var(--admin-black);
+}
+
+.booking-back:hover span:first-child {
+    transform: translateX(-4px);
+}
+
+.booking-topbar h1 {
+    margin: 11px 0 10px;
+    font-family: "Calistoga", serif;
+    font-size: clamp(40px, 5vw, 68px);
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    color: var(--admin-black);
+}
+
+.booking-topbar p {
+    margin: 0;
+    color: var(--admin-grey);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.booking-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-outline-button {
+    height: 42px;
+    padding: 0 19px;
+    border: 1px solid var(--admin-line);
+    background: transparent;
+    color: var(--admin-black);
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease;
+}
+
+.booking-outline-button:hover {
+    background: var(--admin-black);
+    color: var(--admin-cream);
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.booking-page-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 15px;
+    color: var(--admin-grey);
+    font-size: 10px;
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--admin-line);
+    border-top-color: var(--admin-black);
+    border-radius: 50%;
+    animation: bookingSpin 0.8s linear infinite;
+}
+
+@keyframes bookingSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.booking-section {
+    margin-bottom: 90px;
+}
+
+.booking-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 28px;
+}
+
+.booking-section-heading > div {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.booking-section-heading h2 {
+    margin: 0;
+    font-family: "Calistoga", serif;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--admin-black);
+}
+
+.section-number {
+    color: var(--admin-grey);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   BOOKING STATUS
+========================================================= */
+
+.booking-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 12px;
+    border: 1px solid var(--admin-line);
+    border-radius: 30px;
+    color: var(--admin-black);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.booking-status.confirmed {
+    background: #e4eadf;
+    border-color: #c9d3c0;
+}
+
+.booking-status.paid {
+    background: #dce9dd;
+    border-color: #c1d5c3;
+}
+
+.booking-status.partial {
+    background: var(--admin-pink);
+    border-color: #d9baba;
+}
+
+.booking-status.cancelled {
+    background: #eadede;
+    border-color: #d7c3c3;
+}
+
+
+/* =========================================================
+   OVERVIEW
+========================================================= */
+
+.booking-overview-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid var(--admin-line);
+    border-left: 1px solid var(--admin-line);
+}
+
+.booking-info-panel {
+    min-height: 205px;
+    padding: 27px;
+    border-right: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.booking-panel-label {
+    display: block;
+    margin-bottom: 33px;
+    color: var(--admin-grey);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.booking-info-panel h3 {
+    margin: 0 0 18px;
+    font-family: "Calistoga", serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--admin-black);
+}
+
+.booking-contact-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.booking-contact-list span,
+.booking-contact-list a {
+    color: var(--admin-grey);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.booking-contact-list a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.booking-contact-list a:hover {
+    color: var(--admin-black);
+}
+
+.booking-contact-list strong {
+    color: var(--admin-black);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FINANCIAL SUMMARY
+========================================================= */
+
+.financial-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--admin-line);
+    border-left: 1px solid var(--admin-line);
+}
+
+.financial-card {
+    min-height: 175px;
+    padding: 28px;
+    border-right: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+    background: var(--admin-white);
+}
+
+.financial-card span {
+    display: block;
+    margin-bottom: 38px;
+    color: var(--admin-grey);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.financial-card strong {
+    display: block;
+    font-family: "Calistoga", serif;
+    font-size: clamp(25px, 2.7vw, 36px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--admin-black);
+}
+
+.financial-balance {
+    background: var(--admin-black);
+}
+
+.financial-balance span {
+    color: var(--admin-grey);
+}
+
+.financial-balance strong {
+    color: var(--admin-cream);
+}
+
+
+/* =========================================================
+   PAYMENT PROGRESS
+========================================================= */
+
+.payment-progress {
+    margin-top: 25px;
+}
+
+.payment-progress-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+}
+
+.payment-progress-top span {
+    color: var(--admin-grey);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.payment-progress-top strong {
+    color: var(--admin-black);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.payment-progress-track {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    background: var(--admin-cream-2);
+}
+
+.payment-progress-fill {
+    width: 0;
+    height: 100%;
+    background: var(--admin-burgundy);
+    transition: width 0.5s ease;
+}
+
+
+/* =========================================================
+   PAYMENT HISTORY
+========================================================= */
+
+.payment-history {
+    border-top: 1px solid var(--admin-line);
+    border-left: 1px solid var(--admin-line);
+}
+
+.payment-history-head {
+    display: grid;
+    grid-template-columns:
+        1.1fr
+        1fr
+        1.1fr
+        1.5fr
+        1.3fr
+        0.8fr;
+
+    min-height: 50px;
+
+    border-bottom: 1px solid var(--admin-line);
+
+    background: var(--admin-cream-2);
+}
+
+.payment-history-head span {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-right: 1px solid var(--admin-line);
+    color: var(--admin-grey-2);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.payment-history-row {
+    display: grid;
+    grid-template-columns:
+        1.1fr
+        1fr
+        1.1fr
+        1.5fr
+        1.3fr
+        0.8fr;
+
+    min-height: 67px;
+
+    border-bottom: 1px solid var(--admin-line);
+
+    background: var(--admin-white);
+}
+
+.payment-history-row > div {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-right: 1px solid var(--admin-line);
+    color: var(--admin-black);
+    font-size: 9px;
+}
+
+.history-date {
+    color: var(--admin-grey) !important;
+}
+
+.history-type {
+    font-weight: 600;
+}
+
+.history-method {
+    color: var(--admin-grey-2) !important;
+}
+
+.history-reference {
+    color: var(--admin-grey) !important;
+}
+
+.history-amount {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.history-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 28px;
+    border: 1px solid rgba(113, 59, 61, 0.22);
+    background: transparent;
+    color: var(--admin-burgundy);
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.history-delete:hover {
+    background: var(--admin-burgundy);
+    color: var(--admin-cream);
+}
+
+.payment-history-empty {
+    padding: 60px 25px;
+    color: var(--admin-grey);
+    font-size: 10px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   ADD PAYMENT
+========================================================= */
+
+.payment-form-wrapper {
+    border: 1px solid var(--admin-line);
+    background: var(--admin-white);
+}
+
+.payment-form {
+    padding: 35px;
+}
+
+.payment-form-intro {
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--admin-line);
+}
+
+.payment-form-intro .booking-panel-label {
+    margin-bottom: 12px;
+}
+
+.payment-form-intro p {
+    max-width: 520px;
+    margin: 0;
+    color: var(--admin-grey);
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.payment-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 23px;
+}
+
+.payment-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-field-wide {
+    grid-column: 1 / -1;
+}
+
+.payment-field label {
+    margin-bottom: 9px;
+    color: var(--admin-grey-2);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.payment-field input,
+.payment-field select,
+.payment-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--admin-line);
+    border-radius: 0;
+    outline: none;
+    background: var(--admin-cream);
+    color: var(--admin-black);
+    font-family: "DM Sans", sans-serif;
+    font-size: 10px;
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.payment-field input,
+.payment-field select {
+    height: 45px;
+    padding: 0 13px;
+}
+
+.payment-field textarea {
+    min-height: 105px;
+    padding: 13px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.payment-field input:focus,
+.payment-field select:focus,
+.payment-field textarea:focus {
+    border-color: var(--admin-black);
+    background: var(--admin-white);
+}
+
+.payment-field input::placeholder,
+.payment-field textarea::placeholder {
+    color: var(--admin-grey);
+}
+
+.amount-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.amount-input span {
+    position: absolute;
+    left: 13px;
+    z-index: 1;
+    color: var(--admin-grey);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.amount-input input {
+    padding-left: 45px;
+}
+
+.payment-form-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid var(--admin-line);
+}
+
+.payment-form-message {
+    min-height: 18px;
+    color: var(--admin-grey);
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.payment-form-message.success {
+    color: #4f694f;
+}
+
+.payment-form-message.error {
+    color: var(--admin-burgundy);
+}
+
+.payment-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    min-width: 190px;
+    height: 44px;
+    padding: 0 15px 0 18px;
+    border: 1px solid var(--admin-black);
+    background: var(--admin-black);
+    color: var(--admin-cream);
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    cursor: pointer;
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.payment-submit:hover {
+    background: var(--admin-cream);
+    color: var(--admin-black);
+    transform: translateY(-2px);
+}
+
+.payment-submit:disabled {
+    opacity: 0.5;
+    cursor: wait;
+    transform: none;
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.booking-notes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--admin-line);
+    border-left: 1px solid var(--admin-line);
+}
+
+.booking-notes > div {
+    min-height: 125px;
+    padding: 25px;
+    border-right: 1px solid var(--admin-line);
+    border-bottom: 1px solid var(--admin-line);
+    background: var(--admin-white);
+}
+
+.booking-notes > div > span {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--admin-grey);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.booking-notes strong {
+    color: var(--admin-black);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.booking-notes-full {
+    grid-column: 1 / -1;
+}
+
+.booking-notes-full p {
+    max-width: 750px;
+    margin: 0;
+    color: var(--admin-grey-2);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   RECEIPT MODAL
+========================================================= */
+
+.receipt-modal {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease;
+}
+
+.receipt-modal.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.receipt-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(16, 16, 15, 0.72);
+    backdrop-filter: blur(8px);
+}
+
+.receipt-modal-window {
+    position: relative;
+    z-index: 2;
+    width: min(700px, 100%);
+    max-height: 90vh;
+    overflow: auto;
+    background: var(--admin-cream);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+.receipt-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 28px 30px;
+    border-bottom: 1px solid var(--admin-line);
+}
+
+.receipt-modal-header h2 {
+    margin: 10px 0 0;
+    font-family: "Calistoga", serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.receipt-close {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--admin-line);
+    background: transparent;
+    color: var(--admin-black);
+    font-size: 21px;
+    cursor: pointer;
+}
+
+.receipt-preview {
+    padding: 30px;
+}
+
+.receipt-paper {
+    padding: 40px;
+    background: var(--admin-white);
+    border: 1px solid var(--admin-line);
+}
+
+.receipt-brand {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--admin-line);
+}
+
+.receipt-brand-name {
+    font-family: "Calistoga", serif;
+    font-size: 25px;
+}
+
+.receipt-brand-subtitle {
+    margin-top: 5px;
+    color: var(--admin-grey);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.receipt-number {
+    text-align: right;
+}
+
+.receipt-number strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 9px;
+}
+
+.receipt-number span {
+    color: var(--admin-grey);
+    font-size: 8px;
+}
+
+.receipt-title {
+    margin: 35px 0;
+    font-family: "Calistoga", serif;
+    font-size: 31px;
+    font-weight: 400;
+}
+
+.receipt-client-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.receipt-detail span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--admin-grey);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+.receipt-detail strong {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.receipt-financials {
+    border-top: 1px solid var(--admin-line);
+}
+
+.receipt-financial-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--admin-line);
+    font-size: 10px;
+}
+
+.receipt-financial-row span:first-child {
+    color: var(--admin-grey);
+}
+
+.receipt-financial-row strong {
+    font-weight: 700;
+}
+
+.receipt-financial-row.receipt-highlight {
+    font-size: 12px;
+}
+
+.receipt-financial-row.receipt-highlight strong {
+    color: var(--admin-burgundy);
+}
+
+.receipt-footer {
+    padding-top: 30px;
+    color: var(--admin-grey);
+    font-size: 8px;
+    line-height: 1.7;
+}
+
+.receipt-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 30px;
+    border-top: 1px solid var(--admin-line);
+}
+
+.receipt-secondary-button,
+.receipt-primary-button {
+    height: 42px;
+    padding: 0 17px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    cursor: pointer;
+}
+
+.receipt-secondary-button {
+    border: 1px solid var(--admin-line);
+    background: transparent;
+    color: var(--admin-black);
+}
+
+.receipt-primary-button {
+    border: 1px solid var(--admin-black);
+    background: var(--admin-black);
+    color: var(--admin-cream);
+}
+
+.receipt-primary-button:hover {
+    background: var(--admin-burgundy);
+    border-color: var(--admin-burgundy);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .booking-overview-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .financial-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-history {
+        overflow-x: auto;
+    }
+
+    .payment-history-head,
+    .payment-history-row {
+        min-width: 850px;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .booking-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 55px;
+    }
+
+    .booking-topbar-actions {
+        width: 100%;
+    }
+
+    .booking-outline-button {
+        width: 100%;
+    }
+
+    .booking-section {
+        margin-bottom: 65px;
+    }
+
+    .booking-section-heading h2 {
+        font-size: 23px;
+    }
+
+    .payment-form {
+        padding: 23px;
+    }
+
+    .payment-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .payment-field-wide {
+        grid-column: auto;
+    }
+
+    .payment-form-bottom {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .payment-submit {
+        width: 100%;
+    }
+
+    .booking-notes {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-notes-full {
+        grid-column: auto;
+    }
+
+    .receipt-modal {
+        padding: 10px;
+    }
+
+    .receipt-paper {
+        padding: 25px;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    .booking-back {
+        margin-bottom: 35px;
+    }
+
+    .booking-topbar h1 {
+        font-size: 43px;
+    }
+
+    .booking-info-panel {
+        min-height: 175px;
+        padding: 22px;
+    }
+
+    .financial-card {
+        min-height: 150px;
+        padding: 23px;
+    }
+
+    .payment-history {
+        overflow: visible;
+    }
+
+    .payment-history-head {
+        display: none;
+    }
+
+    .payment-history-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-width: 0;
+        gap: 0;
+        padding: 5px 0;
+    }
+
+    .payment-history-row > div {
+        min-height: 52px;
+        padding: 9px 13px;
+    }
+
+    .payment-history-row > div:nth-child(1) {
+        grid-column: 1;
+    }
+
+    .payment-history-row > div:nth-child(2) {
+        grid-column: 2;
+    }
+
+    .payment-history-row > div:nth-child(3) {
+        grid-column: 1;
+    }
+
+    .payment-history-row > div:nth-child(4) {
+        grid-column: 2;
+    }
+
+    .payment-history-row > div:nth-child(5) {
+        grid-column: 1;
+    }
+
+    .payment-history-row > div:nth-child(6) {
+        grid-column: 2;
+    }
+
+    .receipt-client-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .receipt-modal-actions {
+        flex-direction: column;
+    }
+
+    .receipt-secondary-button,
+    .receipt-primary-button {
+        width: 100%;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =====================================================
+   TOTAL AGREED EDITOR
+===================================================== */
+
+.financial-agreed-card {
+    position: relative;
+}
+
+.financial-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.financial-edit-button {
+    border: 1px solid var(--admin-line);
+    background: transparent;
+    color: var(--admin-grey-2);
+    padding: 7px 11px;
+    border-radius: 999px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.financial-edit-button:hover {
+    background: var(--admin-black);
+    color: var(--admin-cream);
+    border-color: var(--admin-black);
+}
+
+.financial-edit-form {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid var(--admin-line);
+}
+
+.financial-edit-form[hidden] {
+    display: none;
+}
+
+.financial-edit-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--admin-grey);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.financial-edit-input-row {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--admin-line);
+    background: var(--admin-white);
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.financial-edit-input-row span {
+    padding-left: 13px;
+    color: var(--admin-grey-2);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.financial-edit-input-row input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px 12px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--admin-black);
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.financial-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.financial-edit-actions button {
+    border: 1px solid var(--admin-line);
+    border-radius: 999px;
+    padding: 9px 13px;
+    background: transparent;
+    color: var(--admin-black);
+    font-family: "DM Sans", sans-serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+}
+
+.financial-edit-actions button:last-child {
+    border-color: var(--admin-black);
+    background: var(--admin-black);
+    color: var(--admin-cream);
+}
+
+.financial-edit-actions button:hover {
+    opacity: 0.8;
+}
+
+.financial-edit-message {
+    min-height: 15px;
+    margin: 10px 0 0;
+    font-size: 9px;
+    color: var(--admin-grey);
+}
+
+.financial-edit-message.success {
+    color: #61745e;
+}
+
+.financial-edit-message.error {
+    color: #9a5f5f;
+}
