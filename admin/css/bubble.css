@@ -1,0 +1,265 @@
+/* =========================================================
+   BLOVEN DECOR
+   FLOATING CONTACT BUBBLE
+========================================================= */
+
+.contact-bubble-wrap {
+    position: fixed;
+
+    right: 20px;
+    bottom: 22vh;
+
+    width: 48px;
+    height: 48px;
+
+    z-index: 9999;
+
+    touch-action: none;
+    user-select: none;
+
+    transition:
+        left .45s cubic-bezier(.22, 1, .36, 1),
+        right .45s cubic-bezier(.22, 1, .36, 1);
+}
+
+
+/* =========================================================
+   MAIN BUBBLE
+========================================================= */
+
+.contact-bubble {
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,.55);
+    border-radius: 50%;
+
+    background: rgba(20,20,20,.92);
+    color: #fff;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.18);
+
+    cursor: grab;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+
+.contact-bubble i {
+    font-size: 19px;
+    line-height: 1;
+}
+
+
+.contact-bubble:hover {
+    transform: scale(1.08);
+}
+
+
+.contact-bubble:active {
+    cursor: grabbing;
+}
+
+
+.contact-bubble-wrap.open .contact-bubble {
+    background: #6f2e32;
+    transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   CONTACT OPTIONS
+========================================================= */
+
+.contact-options {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 58px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform:
+        translateX(-50%)
+        translateY(12px)
+        scale(.85);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s ease;
+}
+
+
+/* OPEN */
+
+.contact-bubble-wrap.open .contact-options {
+
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   CONTACT BUTTONS
+========================================================= */
+
+.contact-option {
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #f4f1eb;
+    color: #151515;
+
+    border: 1px solid rgba(0,0,0,.1);
+
+    text-decoration: none;
+
+    box-shadow:
+        0 7px 20px rgba(0,0,0,.15);
+
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+
+.contact-option i {
+    font-size: 18px;
+    line-height: 1;
+}
+
+
+.contact-option:hover {
+    transform: scale(1.12);
+
+    background: #111;
+    color: #fff;
+}
+
+
+.contact-option:first-child:hover {
+    background: #25D366;
+}
+
+
+.contact-option:nth-child(2):hover {
+    background: #6f2e32;
+}
+
+
+/* =========================================================
+   WHEN BUBBLE IS ON LEFT EDGE
+========================================================= */
+
+.contact-bubble-wrap.edge-left .contact-options {
+
+    left: 58px;
+    bottom: 50%;
+
+    transform:
+        translateY(50%)
+        translateX(-12px)
+        scale(.85);
+
+    flex-direction: row;
+}
+
+
+.contact-bubble-wrap.edge-left.open .contact-options {
+
+    transform:
+        translateY(50%)
+        translateX(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   WHEN BUBBLE IS ON RIGHT EDGE
+========================================================= */
+
+.contact-bubble-wrap.edge-right .contact-options {
+
+    left: auto;
+    right: 58px;
+
+    bottom: 50%;
+
+    transform:
+        translateY(50%)
+        translateX(12px)
+        scale(.85);
+
+    flex-direction: row;
+}
+
+
+.contact-bubble-wrap.edge-right.open .contact-options {
+
+    transform:
+        translateY(50%)
+        translateX(0)
+        scale(1);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .contact-bubble-wrap {
+        width: 44px;
+        height: 44px;
+
+        right: 12px;
+    }
+
+    .contact-bubble {
+        width: 42px;
+        height: 42px;
+    }
+
+    .contact-option {
+        width: 36px;
+        height: 36px;
+    }
+
+}

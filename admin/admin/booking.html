@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Booking — Bloven Control</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/adminbooking.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="admin-sidebar admin-sidebar-right"
+        id="adminSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <a href="../index.html">
+                B
+            </a>
+
+            <span>
+                BLOVEN
+            </span>
+
+            <button
+                type="button"
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                aria-label="Collapse sidebar"
+            >
+                ‹
+            </button>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+                data-label="Dashboard"
+            >
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="admin-nav-item active"
+                data-label="Bookings"
+            >
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span class="nav-text">
+                    Bookings
+                </span>
+            </a>
+
+
+            <a
+                href="calendar.html"
+                class="admin-nav-item"
+                data-label="Calendar"
+            >
+                <span class="nav-icon">
+                    ◫
+                </span>
+
+                <span class="nav-text">
+                    Calendar
+                </span>
+            </a>
+
+
+            <a
+                href="clients.html"
+                class="admin-nav-item"
+                data-label="Clients"
+            >
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span class="nav-text">
+                    Clients
+                </span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="admin-nav-item"
+                data-label="Payments"
+            >
+                <span class="nav-icon">
+                    ₣
+                </span>
+
+                <span class="nav-text">
+                    Payments
+                </span>
+            </a>
+
+
+            <a
+                href="receipts.html"
+                class="admin-nav-item"
+                data-label="Receipts"
+            >
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span class="nav-text">
+                    Receipts
+                </span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span class="nav-text">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-nav-item sidebar-signout"
+                id="signOutButton"
+                data-label="Sign out"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span class="nav-text">
+                    Sign out
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <header class="booking-topbar">
+
+            <div class="booking-topbar-left">
+
+                <a
+                    href="bookings.html"
+                    class="booking-back"
+                >
+                    <span>←</span>
+                    <span>Back to bookings</span>
+                </a>
+
+
+                <span class="admin-eyebrow">
+                    BOOKING CONTROL
+                </span>
+
+
+                <h1 id="bookingTitle">
+                    Booking.
+                </h1>
+
+
+                <p id="bookingReference">
+                    Loading booking...
+                </p>
+
+            </div>
+
+
+            <div class="booking-topbar-actions">
+
+                <button
+                    type="button"
+                    class="booking-outline-button"
+                    id="printBookingButton"
+                >
+                    PRINT
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             LOADING
+        ================================================== -->
+
+        <div
+            class="booking-page-loading"
+            id="bookingLoading"
+        >
+
+            <div class="loading-spinner"></div>
+
+            <span>
+                Loading booking...
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BOOKING CONTENT
+        ================================================== -->
+
+        <div
+            class="booking-content"
+            id="bookingContent"
+            hidden
+        >
+
+
+            <!-- =================================================
+                 SECTION 01 — BOOKING OVERVIEW
+            ================================================== -->
+
+            <section class="booking-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <h2>
+                            Booking Overview
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="booking-status"
+                        id="bookingStatus"
+                    >
+                        —
+                    </span>
+
+                </div>
+
+
+
+                <div class="booking-overview-grid">
+
+
+                    <!-- CLIENT -->
+
+                    <div class="booking-info-panel">
+
+                        <span class="booking-panel-label">
+                            CLIENT
+                        </span>
+
+                        <h3 id="clientName">
+                            —
+                        </h3>
+
+                        <div class="booking-contact-list">
+
+                            <a
+                                href="#"
+                                id="clientPhone"
+                            >
+                                —
+                            </a>
+
+                            <a
+                                href="#"
+                                id="clientEmail"
+                            >
+                                —
+                            </a>
+
+                            <span id="clientCompany">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- EVENT -->
+
+                    <div class="booking-info-panel">
+
+                        <span class="booking-panel-label">
+                            EVENT
+                        </span>
+
+                        <h3 id="eventName">
+                            —
+                        </h3>
+
+                        <div class="booking-contact-list">
+
+                            <span id="eventType">
+                                —
+                            </span>
+
+                            <span id="eventDate">
+                                —
+                            </span>
+
+                            <span id="eventTime">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LOCATION -->
+
+                    <div class="booking-info-panel">
+
+                        <span class="booking-panel-label">
+                            LOCATION
+                        </span>
+
+                        <h3 id="eventVenue">
+                            —
+                        </h3>
+
+                        <div class="booking-contact-list">
+
+                            <span>
+                                Expected guests
+                            </span>
+
+                            <strong id="guestCount">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- BOOKING META -->
+
+                    <div class="booking-info-panel">
+
+                        <span class="booking-panel-label">
+                            BOOKING
+                        </span>
+
+                        <h3 id="bookingId">
+                            —
+                        </h3>
+
+                        <div class="booking-contact-list">
+
+                            <span>
+                                Created
+                            </span>
+
+                            <span id="bookingCreated">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 02 — FINANCIAL SUMMARY
+            ================================================== -->
+
+            <section class="booking-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <h2>
+                            Financial Summary
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="financial-summary-grid">
+
+
+                     <div class="financial-card financial-agreed-card">
+
+                    <div class="financial-card-top">
+
+                        <span>
+                            TOTAL AGREED
+                        </span>
+
+                        <button
+                            type="button"
+                            class="financial-edit-button"
+                            id="editTotalAgreedButton"
+                        >
+                            EDIT
+                        </button>
+
+                    </div>
+
+                    <strong id="totalAgreed">
+                        UGX 0
+                    </strong>
+
+                    <div
+                        class="financial-edit-form"
+                        id="totalAgreedEditForm"
+                        hidden
+                    >
+
+                        <label for="totalAgreedInput">
+                            AGREED AMOUNT
+                        </label>
+
+                        <div class="financial-edit-input-row">
+
+                            <span>
+                                UGX
+                            </span>
+
+                            <input
+                                type="number"
+                                id="totalAgreedInput"
+                                min="0"
+                                step="1000"
+                                placeholder="0"
+                            >
+
+                        </div>
+
+                        <div class="financial-edit-actions">
+
+                            <button
+                                type="button"
+                                id="cancelTotalAgreedButton"
+                            >
+                                CANCEL
+                            </button>
+
+                            <button
+                                type="button"
+                                id="saveTotalAgreedButton"
+                            >
+                                SAVE AMOUNT
+                            </button>
+
+                        </div>
+
+                        <p
+                            class="financial-edit-message"
+                            id="totalAgreedEditMessage"
+                        ></p>
+
+                    </div>
+
+                </div>
+
+
+                    <div class="financial-card">
+
+                        <span>
+                            TOTAL RECEIVED
+                        </span>
+
+                        <strong id="totalReceived">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        class="financial-card financial-balance"
+                    >
+
+                        <span>
+                            BALANCE
+                        </span>
+
+                        <strong id="balanceAmount">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="payment-progress">
+
+                    <div class="payment-progress-top">
+
+                        <span>
+                            PAYMENT PROGRESS
+                        </span>
+
+                        <strong id="paymentPercentage">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="payment-progress-track">
+
+                        <div
+                            class="payment-progress-fill"
+                            id="paymentProgressFill"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 03 — PAYMENT HISTORY
+            ================================================== -->
+
+            <section class="booking-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+                        <h2>
+                            Payment History
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="payment-history-count"
+                        id="paymentHistoryCount"
+                    >
+                        0 payments
+                    </span>
+
+                </div>
+
+
+
+                <div class="payment-history">
+
+                    <div class="payment-history-head">
+
+                        <span>
+                            DATE
+                        </span>
+
+                        <span>
+                            TYPE
+                        </span>
+
+                        <span>
+                            METHOD
+                        </span>
+
+                        <span>
+                            REFERENCE
+                        </span>
+
+                        <span>
+                            AMOUNT
+                        </span>
+
+                        <span>
+                            ACTION
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="paymentHistoryList"
+                        class="payment-history-list"
+                    >
+
+                        <div class="payment-history-empty">
+                            No payments recorded.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 04 — ADD PAYMENT
+            ================================================== -->
+
+            <section class="booking-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            04
+                        </span>
+
+                        <h2>
+                            Add Payment
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="payment-form-wrapper">
+
+
+                    <form
+                        id="paymentForm"
+                        class="payment-form"
+                    >
+
+
+                        <div class="payment-form-intro">
+
+                            <span class="booking-panel-label">
+                                RECORD TRANSACTION
+                            </span>
+
+                            <p>
+                                Add a payment received from this client.
+                                The booking balance will update automatically.
+                            </p>
+
+                        </div>
+
+
+
+                        <div class="payment-form-grid">
+
+
+                            <div class="payment-field">
+
+                                <label for="paymentType">
+                                    PAYMENT TYPE
+                                </label>
+
+                                <select
+                                    id="paymentType"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select payment type
+                                    </option>
+
+                                    <option value="Deposit">
+                                        Deposit
+                                    </option>
+
+                                    <option value="Instalment">
+                                        Instalment
+                                    </option>
+
+                                    <option value="Final Payment">
+                                        Final Payment
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="payment-field">
+
+                                <label for="paymentAmount">
+                                    AMOUNT
+                                </label>
+
+                                <div class="amount-input">
+
+                                    <span>
+                                        UGX
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="paymentAmount"
+                                        min="1"
+                                        step="1"
+                                        placeholder="0"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="payment-field">
+
+                                <label for="paymentDate">
+                                    PAYMENT DATE
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="paymentDate"
+                                    required
+                                >
+
+                            </div>
+
+
+
+                            <div class="payment-field">
+
+                                <label for="paymentMethod">
+                                    PAYMENT METHOD
+                                </label>
+
+                                <select
+                                    id="paymentMethod"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select method
+                                    </option>
+
+                                    <option value="Cash">
+                                        Cash
+                                    </option>
+
+                                    <option value="Mobile Money">
+                                        Mobile Money
+                                    </option>
+
+                                    <option value="Bank Transfer">
+                                        Bank Transfer
+                                    </option>
+
+                                    <option value="Card">
+                                        Card
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <div class="payment-field payment-field-wide">
+
+                                <label for="paymentReference">
+                                    PAYMENT REFERENCE
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="paymentReference"
+                                    placeholder="Mobile money / bank / receipt reference"
+                                    maxlength="120"
+                                >
+
+                            </div>
+
+
+
+                            <div class="payment-field payment-field-wide">
+
+                                <label for="paymentNotes">
+                                    NOTES
+                                </label>
+
+                                <textarea
+                                    id="paymentNotes"
+                                    rows="4"
+                                    placeholder="Optional notes about this payment..."
+                                ></textarea>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="payment-form-bottom">
+
+                            <div
+                                class="payment-form-message"
+                                id="paymentFormMessage"
+                            ></div>
+
+
+                            <button
+                                type="submit"
+                                class="payment-submit"
+                                id="paymentSubmit"
+                            >
+
+                                <span>
+                                    RECORD PAYMENT
+                                </span>
+
+                                <span>
+                                    ↗
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 05 — EVENT NOTES
+            ================================================== -->
+
+            <section class="booking-section">
+
+                <div class="booking-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            05
+                        </span>
+
+                        <h2>
+                            Event Notes
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="booking-notes">
+
+                    <div>
+
+                        <span>
+                            BUDGET
+                        </span>
+
+                        <strong id="bookingBudget">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            SERVICES
+                        </span>
+
+                        <strong id="bookingServices">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="booking-notes-full">
+
+                        <span>
+                            CLIENT BRIEF
+                        </span>
+
+                        <p id="bookingNotes">
+                            No notes provided.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                BLOVEN DECOR
+            </span>
+
+            <span>
+                PRIVATE CONTROL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     RECEIPT MODAL
+========================================================= -->
+
+<div
+    class="receipt-modal"
+    id="receiptModal"
+    aria-hidden="true"
+>
+
+    <div class="receipt-modal-backdrop"></div>
+
+
+    <div class="receipt-modal-window">
+
+
+        <div class="receipt-modal-header">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    PAYMENT RECEIPT
+                </span>
+
+                <h2>
+                    Receipt.
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="receipt-close"
+                id="receiptClose"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <div
+            class="receipt-preview"
+            id="receiptPreview"
+        >
+
+            <!-- generated by JS -->
+
+        </div>
+
+
+
+        <div class="receipt-modal-actions">
+
+            <button
+                type="button"
+                class="receipt-secondary-button"
+                id="receiptCancel"
+            >
+                CLOSE
+            </button>
+
+
+            <button
+                type="button"
+                class="receipt-primary-button"
+                id="downloadReceiptButton"
+            >
+                DOWNLOAD PDF ↗
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- jsPDF -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script src="../js/adminbooking.js"></script>
+
+
+</body>
+
+</html>

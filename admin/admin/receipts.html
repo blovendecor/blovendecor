@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Receipts — Bloven Control</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Calistoga&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/adminreceipts.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-app">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside
+        class="admin-sidebar admin-sidebar-right"
+        id="adminSidebar"
+    >
+
+        <div class="sidebar-brand">
+
+            <a href="../index.html">
+                B
+            </a>
+
+            <span>
+                BLOVEN
+            </span>
+
+            <button
+                type="button"
+                class="sidebar-collapse"
+                id="sidebarCollapse"
+                aria-label="Collapse sidebar"
+            >
+                ‹
+            </button>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+                data-label="Dashboard"
+            >
+                <span class="nav-icon">
+                    ⌂
+                </span>
+
+                <span class="nav-text">
+                    Dashboard
+                </span>
+            </a>
+
+
+            <a
+                href="bookings.html"
+                class="admin-nav-item"
+                data-label="Bookings"
+            >
+                <span class="nav-icon">
+                    □
+                </span>
+
+                <span class="nav-text">
+                    Bookings
+                </span>
+            </a>
+
+
+            <a
+                href="calendar.html"
+                class="admin-nav-item"
+                data-label="Calendar"
+            >
+                <span class="nav-icon">
+                    ◫
+                </span>
+
+                <span class="nav-text">
+                    Calendar
+                </span>
+            </a>
+
+
+            <a
+                href="clients.html"
+                class="admin-nav-item"
+                data-label="Clients"
+            >
+                <span class="nav-icon">
+                    ◉
+                </span>
+
+                <span class="nav-text">
+                    Clients
+                </span>
+            </a>
+
+
+            <a
+                href="payments.html"
+                class="admin-nav-item"
+                data-label="Payments"
+            >
+                <span class="nav-icon">
+                    ₣
+                </span>
+
+                <span class="nav-text">
+                    Payments
+                </span>
+            </a>
+
+
+            <a
+                href="receipts.html"
+                class="admin-nav-item active"
+                data-label="Receipts"
+            >
+                <span class="nav-icon">
+                    ▤
+                </span>
+
+                <span class="nav-text">
+                    Receipts
+                </span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-status">
+
+                <span class="status-dot"></span>
+
+                <span class="nav-text">
+                    SYSTEM ONLINE
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-nav-item sidebar-signout"
+                id="signOutButton"
+                data-label="Sign out"
+            >
+
+                <span class="nav-icon">
+                    ↪
+                </span>
+
+                <span class="nav-text">
+                    Sign out
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="receipts-topbar">
+
+            <div class="receipts-topbar-left">
+
+                <span class="admin-eyebrow">
+                    RECEIPT CONTROL
+                </span>
+
+                <h1>
+                    Receipts.
+                </h1>
+
+                <p>
+                    Every payment received, documented and ready to issue.
+                </p>
+
+            </div>
+
+
+            <div class="receipts-topbar-actions">
+
+                <button
+                    type="button"
+                    class="receipts-outline-button"
+                    id="refreshReceiptsButton"
+                >
+                    REFRESH
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             LOADING
+        ================================================== -->
+
+        <div
+            class="receipts-loading"
+            id="receiptsLoading"
+        >
+
+            <div class="receipts-spinner"></div>
+
+            <span>
+                Loading receipts...
+            </span>
+
+        </div>
+
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+
+        <div
+            class="receipts-content"
+            id="receiptsContent"
+            hidden
+        >
+
+
+            <!-- =================================================
+                 SECTION 01 — OVERVIEW
+            ================================================== -->
+
+            <section class="receipts-section">
+
+                <div class="receipts-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            01
+                        </span>
+
+                        <h2>
+                            Receipt Overview
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="receipt-summary-grid">
+
+
+                    <div class="receipt-summary-card">
+
+                        <span>
+                            TOTAL RECEIPTS
+                        </span>
+
+                        <strong id="totalReceipts">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-summary-card">
+
+                        <span>
+                            TODAY
+                        </span>
+
+                        <strong id="todayReceipts">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-summary-card">
+
+                        <span>
+                            TOTAL RECEIVED
+                        </span>
+
+                        <strong id="totalReceived">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="receipt-summary-card receipt-summary-dark">
+
+                        <span>
+                            THIS MONTH
+                        </span>
+
+                        <strong id="monthReceived">
+                            UGX 0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 02 — RECEIPT HISTORY
+            ================================================== -->
+
+            <section class="receipts-section">
+
+                <div class="receipts-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            02
+                        </span>
+
+                        <h2>
+                            Receipt History
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="receipt-result-count"
+                        id="receiptResultCount"
+                    >
+                        0 receipts
+                    </span>
+
+                </div>
+
+
+
+                <!-- FILTERS -->
+
+                <div class="receipt-filters">
+
+                    <div class="receipt-search">
+
+                        <span>
+                            SEARCH
+                        </span>
+
+                        <input
+                            type="search"
+                            id="receiptSearch"
+                            placeholder="Client, booking or receipt number..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <div class="receipt-filter-field">
+
+                        <label for="receiptTypeFilter">
+                            PAYMENT TYPE
+                        </label>
+
+                        <select id="receiptTypeFilter">
+
+                            <option value="">
+                                All payments
+                            </option>
+
+                            <option value="Deposit">
+                                Deposit
+                            </option>
+
+                            <option value="Instalment">
+                                Instalment
+                            </option>
+
+                            <option value="Final Payment">
+                                Final Payment
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="receipt-filter-field">
+
+                        <label for="receiptMethodFilter">
+                            METHOD
+                        </label>
+
+                        <select id="receiptMethodFilter">
+
+                            <option value="">
+                                All methods
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="Mobile Money">
+                                Mobile Money
+                            </option>
+
+                            <option value="Bank Transfer">
+                                Bank Transfer
+                            </option>
+
+                            <option value="Card">
+                                Card
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="receipt-clear-button"
+                        id="clearReceiptFilters"
+                    >
+                        CLEAR
+                    </button>
+
+                </div>
+
+
+
+                <!-- TABLE -->
+
+                <div class="receipt-table">
+
+                    <div class="receipt-table-head">
+
+                        <span>
+                            RECEIPT
+                        </span>
+
+                        <span>
+                            CLIENT
+                        </span>
+
+                        <span>
+                            BOOKING
+                        </span>
+
+                        <span>
+                            DATE
+                        </span>
+
+                        <span>
+                            TYPE
+                        </span>
+
+                        <span>
+                            AMOUNT
+                        </span>
+
+                        <span>
+                            ACTION
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        class="receipt-table-list"
+                        id="receiptTableList"
+                    ></div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SECTION 03 — RECENT RECEIPT
+            ================================================== -->
+
+            <section class="receipts-section recent-receipt-section">
+
+                <div class="receipts-section-heading">
+
+                    <div>
+
+                        <span class="section-number">
+                            03
+                        </span>
+
+                        <h2>
+                            Recent Receipt
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="recent-receipt-wrapper"
+                    id="recentReceiptWrapper"
+                >
+
+                    <div class="recent-receipt-empty">
+                        Select a receipt above to preview it.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="admin-footer">
+
+            <span>
+                BLOVEN DECOR
+            </span>
+
+            <span>
+                PRIVATE CONTROL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     RECEIPT MODAL
+========================================================= -->
+
+<div
+    class="receipt-view-modal"
+    id="receiptViewModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="receipt-view-backdrop"
+        id="receiptViewBackdrop"
+    ></div>
+
+
+    <div class="receipt-view-window">
+
+
+        <div class="receipt-view-header">
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    PAYMENT RECEIPT
+                </span>
+
+                <h2>
+                    Receipt.
+                </h2>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="receipt-view-close"
+                id="receiptViewClose"
+                aria-label="Close receipt"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="receipt-view-preview"
+            id="receiptViewPreview"
+        ></div>
+
+
+        <div class="receipt-view-actions">
+
+            <button
+                type="button"
+                class="receipt-secondary-button"
+                id="receiptViewCloseButton"
+            >
+                CLOSE
+            </button>
+
+
+            <button
+                type="button"
+                class="receipt-primary-button"
+                id="printReceiptButton"
+            >
+                PRINT RECEIPT
+            </button>
+
+
+            <button
+                type="button"
+                class="receipt-primary-button"
+                id="downloadReceiptButton"
+            >
+                DOWNLOAD PDF ↗
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<!-- =========================================================
+     jsPDF
+========================================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
+<script src="../js/receipts.js"></script>
+
+
+</body>
+
+</html>
