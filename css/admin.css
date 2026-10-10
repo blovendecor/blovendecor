@@ -3568,3 +3568,676 @@ textarea {
         width: 48px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   BLOVEN CONTROL — MOBILE LAYOUT REPAIR
+   Desktop styles remain untouched.
+   Sidebar overlays the dashboard instead of pushing it.
+========================================================= */
+
+@media screen and (max-width: 750px) {
+
+    /* Prevent the page itself from creating horizontal overflow */
+    html,
+    body,
+    .admin-app {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    /* -----------------------------------------------------
+       MAIN DASHBOARD
+       Remove ALL space reserved for the sidebar.
+       The dashboard uses the full phone width.
+    ----------------------------------------------------- */
+
+    .admin-main,
+    .admin-sidebar-right ~ .admin-main,
+    .admin-sidebar-right:hover ~ .admin-main,
+    .admin-sidebar-right.expanded ~ .admin-main {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+
+        margin: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+
+        padding: 28px 20px 45px !important;
+
+        position: relative;
+        left: auto !important;
+        right: auto !important;
+
+        transform: none !important;
+        transition: none !important;
+
+        box-sizing: border-box !important;
+    }
+
+    /* Make every major dashboard section fit its container */
+    .admin-main > *,
+    .admin-main main,
+    .admin-main section,
+    .admin-main .dashboard-section,
+    .admin-main .dashboard-topbar,
+    .admin-main .dashboard-content-grid,
+    .admin-main .dashboard-stats,
+    .admin-main .financial-panel,
+    .admin-main .quick-actions {
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* -----------------------------------------------------
+       RIGHT SIDEBAR — COLLAPSED
+       Fixed above the dashboard; never occupies layout space.
+    ----------------------------------------------------- */
+
+    .admin-sidebar-right {
+        position: fixed !important;
+
+        top: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        left: auto !important;
+
+        width: 58px !important;
+        max-width: 58px !important;
+        height: 100vh;
+        height: 100dvh;
+
+        padding: 18px 5px !important;
+
+        z-index: 99999 !important;
+
+        display: flex;
+        flex-direction: column;
+
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+
+        background: var(--admin-black) !important;
+
+        box-sizing: border-box !important;
+
+        transition:
+            width 0.25s ease,
+            max-width 0.25s ease,
+            box-shadow 0.25s ease !important;
+
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* -----------------------------------------------------
+       SIDEBAR — OPEN
+       Opens over the page, never pushes the dashboard.
+    ----------------------------------------------------- */
+
+    .admin-sidebar-right:hover,
+    .admin-sidebar-right.expanded {
+        width: min(270px, 82vw) !important;
+        max-width: min(270px, 82vw) !important;
+
+        padding: 22px 18px !important;
+
+        box-shadow: -18px 0 50px rgba(0, 0, 0, 0.28);
+    }
+
+    /* Keep the sidebar controls usable on touch screens */
+    .admin-sidebar-right button,
+    .admin-sidebar-right a {
+        touch-action: manipulation;
+    }
+
+    .admin-sidebar-right .sidebar-brand {
+        width: 100%;
+        min-width: 0;
+        margin-bottom: 32px;
+    }
+
+    .admin-sidebar-right .sidebar-brand > span,
+    .admin-sidebar-right .nav-text {
+        max-width: 190px;
+    }
+
+    .admin-sidebar-right .admin-navigation {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .admin-sidebar-right .admin-nav-item {
+        flex-shrink: 0;
+    }
+
+    /* -----------------------------------------------------
+       DASHBOARD HEADER
+    ----------------------------------------------------- */
+
+    .dashboard-topbar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+
+        gap: 20px !important;
+
+        width: 100%;
+        margin: 0 0 38px !important;
+    }
+
+    .dashboard-eyebrow {
+        margin-bottom: 12px !important;
+        font-size: 9px;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-topbar h1 {
+        max-width: 100%;
+        font-size: clamp(36px, 9vw, 54px) !important;
+        line-height: 1.05 !important;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-topbar-right {
+        display: flex !important;
+        flex-wrap: wrap;
+        align-items: center !important;
+        justify-content: space-between !important;
+
+        width: 100%;
+        max-width: 100%;
+        gap: 12px !important;
+    }
+
+    .dashboard-date {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        font-size: 11px;
+    }
+
+    /* -----------------------------------------------------
+       DASHBOARD SECTIONS
+    ----------------------------------------------------- */
+
+    .dashboard-section {
+        width: 100%;
+        margin-bottom: 48px !important;
+    }
+
+    .section-title-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+
+        gap: 10px !important;
+
+        width: 100%;
+        margin-bottom: 20px !important;
+        padding-bottom: 15px;
+    }
+
+    .section-title-row > div {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px !important;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .section-title-row h2 {
+        max-width: 100%;
+        font-size: clamp(22px, 6vw, 29px) !important;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .section-caption {
+        max-width: 100%;
+        line-height: 1.6;
+        overflow-wrap: anywhere;
+    }
+
+    /* -----------------------------------------------------
+       STAT CARDS
+    ----------------------------------------------------- */
+
+    .dashboard-stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+        width: 100%;
+        gap: 1px !important;
+    }
+
+    .stat-card {
+        min-width: 0;
+        min-height: 145px !important;
+        padding: 17px 14px !important;
+        overflow-wrap: anywhere;
+    }
+
+    .stat-label {
+        font-size: 8px !important;
+        line-height: 1.5;
+        letter-spacing: 0.08em !important;
+        overflow-wrap: anywhere;
+    }
+
+    .stat-card strong {
+        margin-top: 18px;
+        font-size: clamp(21px, 5.5vw, 30px) !important;
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .stat-card small {
+        font-size: 10px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    /* -----------------------------------------------------
+       PANELS AND CONTENT GRIDS
+    ----------------------------------------------------- */
+
+    .dashboard-content-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        width: 100%;
+        gap: 18px !important;
+    }
+
+    .dashboard-panel {
+        width: 100%;
+        min-width: 0;
+        min-height: 0 !important;
+        overflow: hidden;
+    }
+
+    .panel-heading {
+        gap: 12px;
+        padding: 20px 17px !important;
+    }
+
+    .panel-heading h3 {
+        font-size: 23px !important;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .panel-heading > div {
+        min-width: 0;
+    }
+
+    .panel-heading > div > span {
+        font-size: 8px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .dashboard-loading {
+        padding: 25px 17px !important;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    /* -----------------------------------------------------
+       RECENT BOOKING ROWS
+    ----------------------------------------------------- */
+
+    .booking-row {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) auto !important;
+        align-items: center;
+
+        gap: 10px !important;
+
+        width: 100%;
+        min-width: 0;
+        min-height: 75px;
+
+        padding: 15px 17px !important;
+    }
+
+    .booking-row-id {
+        min-width: 0;
+        font-size: 9px;
+        overflow-wrap: anywhere;
+    }
+
+    .booking-row-client {
+        min-width: 0;
+        font-size: 12px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .booking-row-event {
+        font-size: 10px;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    .booking-row-date {
+        display: none !important;
+    }
+
+    /* -----------------------------------------------------
+       UPCOMING EVENTS
+    ----------------------------------------------------- */
+
+    .upcoming-event {
+        display: grid !important;
+        grid-template-columns: 52px minmax(0, 1fr) !important;
+
+        gap: 13px !important;
+
+        padding: 18px 16px !important;
+    }
+
+    .upcoming-info {
+        min-width: 0;
+    }
+
+    .upcoming-info strong,
+    .upcoming-info span {
+        overflow-wrap: anywhere;
+        line-height: 1.5;
+    }
+
+    .upcoming-date strong {
+        font-size: 23px !important;
+    }
+
+    /* -----------------------------------------------------
+       FINANCIAL PANEL
+    ----------------------------------------------------- */
+
+    .financial-panel {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) !important;
+
+        width: 100%;
+        min-width: 0;
+    }
+
+    .financial-main,
+    .financial-side {
+        min-width: 0;
+        padding: 25px 19px !important;
+    }
+
+    .financial-main strong {
+        font-size: clamp(30px, 8vw, 45px) !important;
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+    }
+
+    .financial-main p {
+        font-size: 12px;
+        line-height: 1.8;
+        overflow-wrap: anywhere;
+    }
+
+    .financial-side {
+        border-left: 0 !important;
+        border-top: 1px solid var(--admin-dark-line);
+    }
+
+    .financial-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .financial-row span,
+    .financial-row strong {
+        overflow-wrap: anywhere;
+    }
+
+    /* -----------------------------------------------------
+       QUICK ACTIONS
+    ----------------------------------------------------- */
+
+    .quick-actions {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+        width: 100%;
+        gap: 10px !important;
+    }
+
+    .quick-action {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        gap: 8px;
+
+        min-width: 0;
+        min-height: 88px !important;
+        padding: 16px 13px !important;
+
+        font-size: 9px;
+        line-height: 1.6;
+        letter-spacing: 0.04em !important;
+
+        overflow-wrap: anywhere;
+    }
+
+    .quick-action b {
+        flex: 0 0 auto;
+        font-size: 16px;
+    }
+
+    /* -----------------------------------------------------
+       FOOTER
+    ----------------------------------------------------- */
+
+    .admin-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 10px;
+
+        width: 100%;
+        padding-top: 20px;
+
+        font-size: 8px;
+        line-height: 1.7;
+        overflow-wrap: anywhere;
+    }
+
+    /* Prevent long labels, IDs and values from stretching the page */
+    .admin-main h1,
+    .admin-main h2,
+    .admin-main h3,
+    .admin-main p,
+    .admin-main span,
+    .admin-main strong,
+    .admin-main a {
+        overflow-wrap: anywhere;
+    }
+
+    /* Images and embedded media stay inside the viewport */
+    .admin-main img,
+    .admin-main video,
+    .admin-main canvas,
+    .admin-main iframe {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   EXTRA SMALL PHONES
+========================================================= */
+
+@media screen and (max-width: 420px) {
+
+    .admin-main,
+    .admin-sidebar-right ~ .admin-main,
+    .admin-sidebar-right:hover ~ .admin-main,
+    .admin-sidebar-right.expanded ~ .admin-main {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 23px 15px 35px !important;
+    }
+
+    .admin-sidebar-right {
+        width: 52px !important;
+        max-width: 52px !important;
+        padding: 15px 3px !important;
+    }
+
+    .admin-sidebar-right:hover,
+    .admin-sidebar-right.expanded {
+        width: min(255px, 86vw) !important;
+        max-width: min(255px, 86vw) !important;
+        padding: 18px 15px !important;
+    }
+
+    .dashboard-topbar {
+        margin-bottom: 30px !important;
+    }
+
+    .dashboard-topbar h1 {
+        font-size: clamp(32px, 9vw, 43px) !important;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .stat-card {
+        min-height: 130px !important;
+        padding: 14px 11px !important;
+    }
+
+    .stat-card strong {
+        font-size: 21px !important;
+    }
+
+    .panel-heading {
+        padding: 17px 13px !important;
+    }
+
+    .booking-row {
+        padding: 14px 13px !important;
+    }
+
+    .upcoming-event {
+        padding: 16px 13px !important;
+    }
+
+    .financial-main,
+    .financial-side {
+        padding: 22px 15px !important;
+    }
+
+    .quick-action {
+        padding: 14px 11px !important;
+        font-size: 8px;
+    }
+}
+
+/* =========================================================
+   LOGIN PAGE — KEEP IT RESPONSIVE WITHOUT AFFECTING DESKTOP
+========================================================= */
+
+@media screen and (max-width: 750px) {
+
+    body.admin-login-page {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    body.admin-login-page .login-shell {
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    body.admin-login-page .login-introduction,
+    body.admin-login-page .login-panel {
+        width: 100%;
+        min-width: 0;
+    }
+
+    body.admin-login-page .login-panel-inner {
+        width: 100%;
+        max-width: 540px;
+        min-width: 0;
+    }
+
+    body.admin-login-page .admin-login-form,
+    body.admin-login-page .admin-field {
+        width: 100%;
+        min-width: 0;
+    }
+
+    body.admin-login-page .admin-field input {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MOBILE — RIGHT SIDEBAR CLEARANCE
+========================================================= */
+
+@media (max-width: 750px) {
+    .admin-main {
+        box-sizing: border-box;
+        padding-right: 82px !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 420px) {
+    .admin-main {
+        padding-right: 76px !important;
+        padding-left: 14px !important;
+    }
+}
